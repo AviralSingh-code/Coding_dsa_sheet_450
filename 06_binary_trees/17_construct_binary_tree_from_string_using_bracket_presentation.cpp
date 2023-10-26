@@ -2,7 +2,60 @@
     link: https://www.geeksforgeeks.org/construct-binary-tree-string-bracket-representation/
 */
 
-
+class Solution{
+public:
+    int i = 0;
+    
+    void helper(Node* root, string s, int n)
+    {
+        if(i >= n) return;
+        
+        if(i < n && isdigit(s[i]))
+        {
+            int sum = 0;
+            while(i < n && isdigit(s[i]))
+            {
+                sum = (sum * 10) + (s[i] - '0');
+                i++;
+            }
+            
+            root->data = sum;
+        }
+        
+        if(i < n && s[i] == '(')
+        {
+            root->left = new Node(0);
+            i++;
+            helper(root->left, s, n);
+            if(root->left->data == 0) //imp condition for tc --> 1()(3) --> that has blank child
+            {
+                root->left = NULL;
+            }
+        }
+        
+        if(i < n && s[i] == '(') //if we find the 2nd opening brace it means that we are at the right child
+        {
+            root->right = new Node(0);
+            i++;
+            helper(root->right, s, n);
+            if(root->right->data == 0)
+            {
+                root->right = NULL;
+            }
+        }
+        
+        if(i >= n || s[i] == ')')
+        {
+            i++;
+            return;
+        }
+    }
+    Node *treeFromString(string str){
+        Node* root = new Node(0);
+        helper(root, str, str.length());
+        return root;
+    }
+};
 
 
 // ----------------------------------------------------------------------------------------------------------------------- //

@@ -26,7 +26,7 @@ int main()
         for (i = 0;i < n;++i)
             cin >> v[i];
 
-        int count = 0, swaps = 0, penalty = 0;
+        int possible = 0, swaps = 0, notpossible = 0;
         for (i = n - 1;i >= 0;--i)
         {
             int distance_needed = b - x[i];
@@ -35,20 +35,20 @@ int main()
             // chick will be able to reach barn
             if (distance_possible >= distance_needed)
             {
-                count++;
-                // if (penalty > 0)
-                swaps += penalty;
+                possible++;
+                // if (notpossible > 0)
+                swaps += notpossible;
             }
             // chick will not be able to reach
             else
-                // hence penalty increases
-                penalty++;
+                // hence notpossible increases
+                notpossible++;
 
-            if (count >= k)
+            if (possible >= k)
                 break;
         }
 
-        if (count >= k)
+        if (possible >= k)
             cout << "Case #" << j << ": " << swaps << endl;
 
         else

@@ -11,7 +11,7 @@ vector<vector<int>> merge(vector<vector<int>>& intervals) {
     for (int i = 1;i < n;i++) {
         long long& idx_end = intervals[idx].second;
         if (idx_end >= intervals[i].first) {
-            idx_end = max(idx_end, intervals[i].first);
+            idx_end = max(idx_end, intervals[i].second);
         }
         else {
             idx++;

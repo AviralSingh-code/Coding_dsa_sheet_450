@@ -18,6 +18,9 @@ void check_shuffle_of_2_string() {
         if    string s2 = "2xy1" is invalid here "xy" is maintained but not "12"
         if    string s2 = "y1x2" is invalid here "12" is maintained but not "xy"
     */
+
+   //s2 = abcd    a = ab    b = ab
+
     string s2 = "y12x";
     int i = 0;
     int j = 0;

@@ -5,6 +5,55 @@
     sol2: https://www.geeksforgeeks.org/merge-k-sorted-linked-lists-set-2-using-min-heap/
 */
 
+//TC O(n log k) -- >
+// this is because if we had 10 lists then it reduces to 5 in the 
+// next step because we are merging 1 and 10 then 2 and 9 then 3 and 8 and so on
+// so there are k lists which is reducing to half each time so we have the TC as log k
+// we are visiting each node only 1 time so the complexity is N.
+// and SC O(1)
+
+class Solution{
+  public:
+    Node* merge(Node* a, Node* b)
+    {
+        if(a == NULL) return b;
+        if(b == NULL) return a;
+        Node* res = NULL;
+        if(a->data <= b->data)
+        {
+            res = a;
+            res->next = merge(a->next, b);
+        }
+        else
+        {
+            res = b;
+            res->next = merge(a, b->next);
+        }
+        return res;
+    }
+    Node * mergeKLists(Node *arr[], int K)
+    {
+           int i = 0;
+           int last = K-1;
+           int j;
+           while(last != 0)
+           {
+               i = 0;
+               j = last;
+               while(i<j)
+               {
+                   arr[i] = merge(arr[i],arr[j]);
+                   i++;
+                   j--;
+                   if(i >= j)
+                   {
+                       last = j;
+                   }
+               }
+           }
+           return arr[0];
+    }
+};
 
 // ----------------------------------------------------------------------------------------------------------------------- //
 /*
@@ -15,8 +64,7 @@
     SC: O(K)
 */
 struct compare {
-    bool operator()(
-        struct Node* a, struct Node* b)
+    bool operator()(struct Node* a, struct Node* b)
     {
         return a->data > b->data;
     }
@@ -64,7 +112,6 @@ struct Node* mergeKSortedLists(
             // push the next node of top node in 'pq'
             pq.push(curr->next);
     }
-
     // address of head node of the required merged list
     return dummy->next;
 }

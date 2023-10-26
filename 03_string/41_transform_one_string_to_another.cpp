@@ -45,7 +45,6 @@ int minOps(string& A, string& B)
             res++;
         }
 
-
         // If A[i] and B[j] match
         if (i >= 0)
         {

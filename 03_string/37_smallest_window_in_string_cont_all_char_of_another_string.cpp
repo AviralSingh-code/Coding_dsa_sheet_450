@@ -18,8 +18,11 @@ const int no_of_chars = 256;
 // all characters of 'pat'
 string findSubString(string str, string pat)
 {
-    int len1 = str.length();
-    int len2 = pat.length();
+    int len1 = str.length(); //-->21
+    int len2 = pat.length(); //-->4
+
+    // str = “this is a test string”, pat = “tist” 
+
 
     // Check if string's length
     // is less than pattern's
@@ -36,7 +39,7 @@ string findSubString(string str, string pat)
     // Store occurrence ofs characters
     // of pattern
     for (int i = 0; i < len2; i++)
-        hash_pat[pat[i]]++;
+        hash_pat[pat[i]]++;                 //t--->2 i-->1 s--->1
 
     int start = 0, start_index = -1, min_len = INT_MAX;
 
@@ -47,24 +50,21 @@ string findSubString(string str, string pat)
 
         // Count occurrence of characters
         // of string
-        hash_str[str[j]]++;
+        hash_str[str[j]]++;     //t--->2  h--->1 i-->2  s--->1
 
         // If string's char matches with
         // pattern's char
         // then increment count
         if (hash_str[str[j]] <= hash_pat[str[j]])
-            count++;
+            count++;                                        //4
 
         // if all the characters are matched
         if (count == len2) {
 
             // Try to minimize the window
-            while (hash_str[str[start]]
-    > hash_pat[str[start]]
-                || hash_pat[str[start]] == 0) {
+            while (hash_str[str[start]] > hash_pat[str[start]] || hash_pat[str[start]] == 0) {
 
-                if (hash_str[str[start]]
-    > hash_pat[str[start]])
+                if (hash_str[str[start]] > hash_pat[str[start]])
                     hash_str[str[start]]--;
                 start++;
             }

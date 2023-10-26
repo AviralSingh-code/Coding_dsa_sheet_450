@@ -33,8 +33,8 @@ int without_DMM(int dividend, int divisor) {
     int temp = 0;
     for (int i = 31;i >= 0;i--) {
         // Add the result in temp variable for checking the next position such that (temp + (divisor << i) ) is less than dividend.
-        if (temp + (divisor << 1) <= dividend) {
-            temp += divisor << 1;
+        if (temp + (divisor << i) <= dividend) {
+            temp += divisor << i;
             quotient |= 1 << i;
         }
     }

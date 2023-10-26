@@ -37,6 +37,10 @@ int SumOfKsubArray(int arr[], int n, int k)
     // values from front to rear
     deque< int > S(k), G(k);
 
+
+    // Input : arr[] = {2, 5, -1, 7, -3, -1, -2}  
+    //     K = 4
+
     // Process first window of size K
     int i = 0;
     for (i = 0; i < k; i++)
@@ -52,8 +56,8 @@ int SumOfKsubArray(int arr[], int n, int k)
             G.pop_back(); // Remove from rear
 
         // Add current element at rear of both deque
-        G.push_back(i);
-        S.push_back(i);
+        G.push_back(i);     //1 3 5
+        S.push_back(i);     //2 4 5
     }
 
     // Process rest of the Array elements

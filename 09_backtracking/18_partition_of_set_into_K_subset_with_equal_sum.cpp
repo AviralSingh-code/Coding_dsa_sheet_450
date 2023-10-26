@@ -10,7 +10,80 @@
     sol: https://www.geeksforgeeks.org/partition-of-a-set-into-k-subsets-with-equal-sum-using-bitmask-and-dp/
 */
 
+bool flag = false;
+void helper(vector<int> &v, int n, vector<vector<int>> &res, int i, int k)
+{
+    if(flag) return;
+    if(i == n)
+    {
+        int sum = 0;
+        for(auto x : res[0])
+        {
+            sum += x;
+        }
 
+        bool state = true;
+        for(int j = 1;j<k;j++)
+        {
+            int temp = 0; 
+            for(auto x : res[j])
+            {
+                temp += x;
+            }
+            if(temp != sum)
+            {
+                state = false;
+                break;
+            }
+        }
+        if(state)
+        {
+            flag = true;
+        }
+        return;
+    }
+
+    loop(j,k)
+    {
+        if(res[j].size() > 0)   //putting that element to an already filled set
+        {
+            res[j].pb(v[i]);
+            helper(v, n, res, i + 1, k);
+            res[j].pop_back();
+        }
+        else if(res[j].size() == 0) //putiing the element to an empty set but to just 1 empty set that is why break is used
+        {
+            res[j].pb(v[i]);
+            helper(v, n, res, i + 1, k);
+            res[j].pop_back();
+            break;
+        }
+    }
+}
+
+void solve()
+{
+    int n;
+    cin>>n;
+    vector<int> v(n);
+    loop(i,n)
+    {
+        cin>>v[i];
+    }
+    int k;
+    cin>>k;
+
+    vector<vector<int>> hold(k);
+    helper(v,n,hold,0,k);
+    if(flag)
+    {
+        cout<<1<<endl;
+    }
+    else
+    {
+        cout<<0<<endl;
+    }
+}
 
 // ----------------------------------------------------------------------------------------------------------------------- //
 // explanation is given in video

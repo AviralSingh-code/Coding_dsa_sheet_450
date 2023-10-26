@@ -4,6 +4,26 @@
     sol: https://www.geeksforgeeks.org/maximum-product-subarray/
 */
 
+// TC --> O(N)
+
+long long maxProduct(int *arr, int n)
+{
+    int prefix = 1, suffix = 1;
+
+    int ans = 0;
+
+    for(int i = 0;i<n;i++)
+    {
+        if(prefix == 0) prefix = 1; //if there is a 0 in the array then we start new
+        if(suffix == 0) suffix = 1;
+
+        prefix = prefix * arr[i];
+        suffix = suffix * arr[n-i-1];
+
+        ans = max(ans,max(prefix,suffix));
+    }
+    return ans;
+}
 
 
 // ----------------------------------------------------------------------------------------------------------------------- //

@@ -1,7 +1,7 @@
 /*
     link: https://www.geeksforgeeks.org/efficiently-implement-k-stacks-single-array/
 
-    TODO learn this properly.
+    TO DO learn this properly.
 */
 
 

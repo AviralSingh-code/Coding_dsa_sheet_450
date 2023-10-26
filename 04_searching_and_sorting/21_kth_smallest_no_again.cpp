@@ -37,7 +37,6 @@ int main() {
 
         while (q--)
         {
-
             cin >> k;
             ll ans = -1;
 

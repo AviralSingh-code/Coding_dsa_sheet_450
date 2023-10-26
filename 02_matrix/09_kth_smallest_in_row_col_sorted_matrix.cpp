@@ -19,6 +19,33 @@
         2. Heapify k times which takes O(k Logn) time.
     Space Complexity: O(R), where R is the length of a row, as the Min-Heap stores one row at a time.
 */
+
+
+/* My solution using the binary search and the upper bound function*/
+int kthSmallest(int mat[MAX][MAX], int n, int k)
+{
+  int l = mat[0][0];
+  int h = mat[n-1][n-1];
+  while(l<h)
+  {
+      int mid = (h+l)/2;
+      int count = 0;
+      for(int i = 0;i<n;i++)
+      {
+          count += upper_bound(mat[i],mat[i]+n,mid) - mat[i];
+      }
+      if(count<k)
+      {
+          l = mid + 1;
+      }
+      else
+      {
+          h = mid;
+      }
+  }
+  return l;
+}
+//-----------------------------------------------------------------------
 #include<bits/stdc++.h>
 using namespace std;
 #define MAX 1000
@@ -231,7 +258,7 @@ int getElementsGreaterThanOrEqual(int num, int n, int mat[4][4]) {
     return ans;
 }
 
-// reuturs kth smallest index in the matrix
+// returs kth smallest index in the matrix
 int kthSmallest(int mat[4][4], int n, int k) {
     // We know the answer lies between the first and the last element
     // So do a binary search on answer based on the number of elements

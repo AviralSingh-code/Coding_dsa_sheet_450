@@ -30,7 +30,7 @@ node* createNode(int val)
     return newNode;
 }
 
-// Function to print the inrder traversal
+// Function to print the inorder traversal
 void inorder(node* root)
 {
     if (root == NULL)

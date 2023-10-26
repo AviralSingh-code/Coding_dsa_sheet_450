@@ -13,7 +13,6 @@ int split(string stringToSplit, int n) {
         if (stringToSplit[i] == '0') arr[i] = -1;
         else arr[i] = 1;
         if (i) arr[i] += arr[i - 1];
-
         if (arr[i] == 0) count++;
     }
 

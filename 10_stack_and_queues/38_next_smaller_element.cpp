@@ -30,6 +30,48 @@ void printNSE(int arr[], int n) {
     cout << endl;
 }
 
+// Using stack O(N)
+
+void solve()
+{
+    int n;
+    cin>>n;
+
+    vector<int> v(n);
+
+    loop(i,n)
+    {
+        cin>>v[i];
+    }
+
+
+    stack<int> st;
+
+    vector<int> ans;
+    for(int i = n-1;i>=0;i--)
+    {
+        while(!st.empty() && st.top() > v[i])
+        {
+            st.pop();
+        }
+
+        if(st.empty())
+        {
+            ans.pb(-1);
+        }
+        else
+        {
+            ans.pb(st.top());
+        }
+
+        st.push(v[i]);
+    }
+
+    reverse(all(ans));
+
+    printSingle(ans);
+}
+
 
 
 

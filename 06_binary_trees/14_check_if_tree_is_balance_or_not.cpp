@@ -4,7 +4,34 @@
     sol: https://www.geeksforgeeks.org/how-to-determine-if-a-binary-tree-is-balanced/
 */
 
+//TC = O(N) , SC = O(height of the tree)
 
+class Solution{
+    public:
+    int helper(Node* root, bool &flag)
+    {
+        if(!root) return 0;
+        
+        if(!flag) return 0;
+        
+        int leftH = helper(root->left, flag);
+        int rightH = helper(root->right, flag);
+        
+        if(abs(leftH - rightH) > 1)
+        {
+            flag = false;
+        }
+        
+        return max(leftH, rightH) + 1;
+    }
+    bool isBalanced(Node *root)
+    {
+        bool flag = true;
+        helper(root, flag);
+        if(flag) return true;
+        return false;
+    }
+};
 
 
 

@@ -2,8 +2,6 @@
     link: https://www.geeksforgeeks.org/function-to-find-number-of-customers-who-could-not-get-a-computer/
 */
 
-
-
 // ----------------------------------------------------------------------------------------------------------------------- //
 int disappointed(int capacity, string s) {
     int cnt[26];

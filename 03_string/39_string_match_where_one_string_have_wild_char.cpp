@@ -62,3 +62,35 @@ bool isMatch(string s, string p)
     dp.resize(s.size() + 1, vector<int>(p.size() + 1, -1));
     return dp[s.size()][p.size()] = finding(s, p, s.size() - 1, p.size() - 1);
 }
+
+
+
+/*-----------------My solution------------------*/
+class Solution{
+    public:
+    bool helper(int i, int j,string wild, string pattern)
+    {
+        if(i<0&&j<0) return true;
+        if(i<0&&j>=0) return false;
+        if(i>=0&&j<0)
+        {
+            for(int k = 0;k<=i;k++)
+            {
+                if(wild[k]!='*') return false;
+            }
+            return true;
+        }
+        if(wild[i]==pattern[j]||wild[i]=='?')
+        {
+            return helper(i-1,j-1,wild,pattern);
+        }
+        else if(wild[i]=='*')
+        {
+            return helper(i-1,j-1,wild,pattern) || helper(i,j-1,wild, pattern) || helper(i-1,j,wild, pattern);
+        }
+    }
+    bool match(string wild, string pattern)
+    {
+        return helper(wild.length()-1,pattern.length()-1,wild,pattern);
+    }
+};

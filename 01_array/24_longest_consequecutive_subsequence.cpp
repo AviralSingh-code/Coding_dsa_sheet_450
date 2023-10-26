@@ -3,6 +3,36 @@
 */
 
 
+// TC --> O(N)
+
+int findLongestConseqSubseq(int arr[], int N)
+    {
+      unordered_set<int> st;
+      
+      for(int i = 0;i<N;i++)
+      {
+          st.insert(arr[i]);
+      }
+      int longestSequence = 0;
+      int currLen = 0;
+      for(int i = 0;i<N;i++)
+      {
+          if(st.find(arr[i]-1) == st.end()) //this means we are at the starting point 
+          {
+              int checkEle = arr[i];
+              while(st.find(checkEle) != st.end())
+              {
+                  currLen++;
+                  checkEle++;
+              }
+              longestSequence = max(longestSequence, currLen);
+              currLen = 0;
+          }
+      }
+      return longestSequence;
+    }
+
+
 // ----------------------------------------------------------------------------------------------------------------------- //
 int findLongestConseqSubseq(int arr[], int N)
 {

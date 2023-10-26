@@ -14,7 +14,7 @@
     SC: O(1)
 */
 
-// return amount of wood will be cutted for the given height of machine
+// return amount of wood will be cut for the given height of machine
 ll total_wood(vector<long long>& h, int n, int machine_height) {
     ll wood = 0;
     for (int i = 0;i < n;i++) {

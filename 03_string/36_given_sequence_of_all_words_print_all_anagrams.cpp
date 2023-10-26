@@ -10,14 +10,16 @@
 
 // ----------------------------------------------------------------------------------------------------------------------- //
 string sorted_chars(string s) {
-    vector<char> temp;
-    for (char c : s) temp.push_back(c);
+    // vector<char> temp;
+    // for (char c : s) temp.push_back(c);
 
-    sort(temp.begin(), temp.end());
+    // sort(temp.begin(), temp.end());         
 
-    s = "";
-    for (int i = 0; i < temp.size(); i++) s += temp[i];
+    // s = "";
+    // for (int i = 0; i < temp.size(); i++) s += temp[i];
 
+    // return s;
+    sort(s.begin(),s.end());
     return s;
 }
 

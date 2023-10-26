@@ -44,8 +44,7 @@ int maxStop(int arr[][3])
 		int x = 0;
 		count++;
 		for (int j = 1; j < vect[i].size(); j++) {
-			if (vect[i][j].second >=
-				vect[i][x].first) {
+			if (vect[i][j].second >= vect[i][x].first) {
 				x = j;
 				count++;
 			}

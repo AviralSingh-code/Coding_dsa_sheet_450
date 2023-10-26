@@ -8,6 +8,43 @@ to find set bits: __builtin_popcount(N);
 
 */
 
+/*
+    The basic idea is to use the formula
+
+    s(n) = (2^(x-1))*x + (n - 2^x + 1) + s(n - 2^x);
+
+    (2^(x-1))*x --> gives the number of bits in a power of 2 just smaller or equal to n
+    eg. for n = 11 , this expression will count all the bits upto to 8
+
+    (n - 2^x + 1) --> this is to add all the bits that get added when we move ahead a power of 2
+    eg upto 7 we use only 3 bits but from 8 we start using 4 bits
+
+    s(n - 2^x) --> this is to reduce the number by substracting the power of 2 closest to
+    the number
+*/
+int largestPowerOf2(int n)
+{
+    int x = 0;
+
+    while(1 << x <= n)
+    {
+        x++;
+    }
+
+    return x-1; //this returns the power of 2
+}
+
+int countBits(int n)
+{
+    if(n <= 0) return 0;
+
+    if(n == 1) return 1;
+
+    int x = largestPowerOf2(n);
+
+    return ((1 << x-1) * x) + (n - (1 << x) + 1) + countBits(n - (1 << x));
+}
+
 // ----------------------------------------------------------------------------------------------------------------------- //
 
 int total_popcount(int n) {

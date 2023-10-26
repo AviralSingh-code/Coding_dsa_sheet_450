@@ -17,8 +17,6 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
     return matrix[i][j] == target;
 }
 
-
-
 // ----------------------------------------------------------------------------------------------------------------------- //
 /*
     using binary search

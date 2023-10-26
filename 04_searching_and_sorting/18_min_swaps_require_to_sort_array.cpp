@@ -93,16 +93,9 @@ int findMinSwap(int arr[], int n)
             // swap with its respective index
             swap(vec[i].first, vec[vec[i].second].first);
             swap(vec[i].second, vec[vec[i].second].second);
+            i--;
         }
 
-        // swap until the correct
-        // index matches
-        if (i != vec[i].second)
-            --i;
-
-        // each swap makes one element
-        // move to its correct index,
-        // so increment answer
         ans++;
     }
 

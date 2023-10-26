@@ -24,11 +24,13 @@ int height(struct Node* node)
         int lHeight = height(node->left);
         int rHeight = height(node->right);
 
-        if (lHeight > rHeight) {
-            return lHeight + 1;
-        }
-        else {
-            return rHeight + 1;
-        }
+        // if (lHeight > rHeight) {
+        //     return lHeight + 1;
+        // }
+        // else {
+        //     return rHeight + 1;
+        // }
+
+        return max(lHeight,rHeight)+1;
     }
 }
