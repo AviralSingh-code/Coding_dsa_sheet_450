@@ -7,6 +7,60 @@
     ref: oneNote
 */
 
+//O(n^3) -->TC
+
+class Solution{
+  public:
+    string valid(int i, int j, int k, string &s)
+    {
+        string s1 = s.substr(0,i+1);
+        string s2 = s.substr(i+1,j-i);
+        string s3 = s.substr(j+1,k-j);
+        string s4 = s.substr(k+1);
+        
+        int l1 = s1.length(), l2 = s2.length(), l3 = s3.length(), l4 = s4.length();
+        if(l1 > 0 && l1 <= 3 && l2 > 0 && l2 <= 3 && l3 > 0 && l3 <= 3 && l4 > 0 && l4 <= 3)
+        {
+            if(s1[0] == '0' && l1 > 1) return "";
+            if(s2[0] == '0' && l2 > 1) return "";
+            if(s3[0] == '0' && l3 > 1) return "";
+            if(s4[0] == '0' && l4 > 1) return "";
+            
+            int v1 = stoi(s1);
+            int v2 = stoi(s2);
+            int v3 = stoi(s3);
+            int v4 = stoi(s4);
+            
+            if(v1 >= 0 && v1 <= 255 && v2 >= 0 && v2 <= 255 && v3 >=0 && v3 <= 255 && v4 >=0 && v4 <= 255)
+            {
+                return s1+"."+s2+"."+s3+"."+s4;
+            }
+            
+            return "";
+        }
+        return "";
+    }
+    vector<string> genIp(string &s) {
+        int n = s.length();
+        vector<string> ans;
+        for(int i = 0;i<n-3;i++)
+        {
+            for(int j = i+1; j < n-2; j++)
+            {
+                for(int k = j+1; k < n-1; k++)
+                {
+                    string res = valid(i,j,k,s);
+                    if(res != "")
+                    {
+                        ans.push_back(res);
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+
+};
 
 
 

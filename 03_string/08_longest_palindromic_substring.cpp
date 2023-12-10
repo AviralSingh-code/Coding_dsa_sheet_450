@@ -5,6 +5,52 @@
 */
 
 
+//TC O(n*n)
+//SC O(1)
+string longestPalin(string s)
+{
+    int resStart = -1;
+    int resLen = 0;
+
+    int n = s.length();
+
+    for(int i = 0; i < n;i++)
+    {
+        //for odd length
+        int l = i,r = i;
+
+        while(l >= 0 && r < n && s[l] == s[r])
+        {
+            if((r - l + 1) > resLen)
+            {
+                resLen = r - l + 1;
+                res = l;
+            }
+            l--;
+            r++;
+        }
+
+
+
+        //for even length
+        l = i;
+        r = i + 1;
+
+         while(l >= 0 && r < n && s[l] == s[r])
+        {
+            if((r - l + 1) > resLen)
+            {
+                resLen = r - l + 1;
+                res = l;
+            }
+            l--;
+            r++;
+        }
+    }
+
+    return s.substr(res, resLen);
+}
+
 // ----------------------------------------------------------------------------------------------------------------------- //
 string longestPalin(string s)
 {

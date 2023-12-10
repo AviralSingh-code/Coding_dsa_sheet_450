@@ -23,10 +23,10 @@ int minOps(string& A, string& B)
         return -1;
     int count[256];
     memset(count, 0, sizeof(count));
-    for (int i = 0; i < n; i++) // count characters in A
-        count[B[i]]++;
+    for (int i = 0; i < m; i++) // count characters in A
+        count[A[i]]++;
     for (int i = 0; i < n; i++) // subtract count for
-        count[A[i]]--;		 // every character in B
+        count[B[i]]--;		 // every character in B
     for (int i = 0; i < 256; i++) // Check if all counts become 0
         if (count[i])
             return -1;

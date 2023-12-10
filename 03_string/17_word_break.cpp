@@ -24,7 +24,7 @@ int solve(string s, vector<string> &b)
         string ss = s.substr(0,i);
         for(int j = 0; j < b.size(); j++)
         {
-            if(s == b[j])
+            if(ss == b[j])
             {
                 flag = 1;
                 break;

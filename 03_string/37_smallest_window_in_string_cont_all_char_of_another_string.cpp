@@ -135,8 +135,8 @@ string Minimum_Window(string s, string t)
     while (j < s.length()) {
         // Calculations
         m[s[j]]--;
-        if (m[s[j]] == 0)
-            count--;
+        if (m[s[j]] == 0)   //after reducing the value of the map by 1 in the above step if we are getting 0
+            count--; //it means that this character was also present in the patterns
 
         // Condition matching
         if (count == 0) {
@@ -150,8 +150,8 @@ string Minimum_Window(string s, string t)
                 // Calculation for removing I
 
                 m[s[i]]++;
-                if (m[s[i]] > 0)
-                    count++;
+                if (m[s[i]] > 0) //if after the above step we are getting >0 this means the value was 0 or greater
+                    count++; //which means that the value was present in the map already
 
                 i++;
             }
