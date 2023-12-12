@@ -5,6 +5,32 @@
 */
 
 
+int countRev (string s)
+{
+    int n = s.length();
+    if(n % 2)
+    {
+        return -1;
+    }
+    
+    int ans = 0;
+    int opening = 0, closing = 0;
+    for(int i = 0;i<n;i++)
+    {
+        if(s[i] == '{') opening++;
+        else closing++;
+        
+        if(closing > opening)
+        {
+            ans += closing - opening;
+            swap(closing, opening);
+        }
+    }
+    ans += (abs(closing - opening))/2;
+    return ans;
+}
+
+
 /*
 TC O(n)
 SC O(1)
